@@ -36,7 +36,6 @@ public class Menu {
                     horseMovement.printAllStacks();
                     break;
                 case 3:
-                    horseMovement.printAllPaths();
                     System.exit(0);
             }
         }

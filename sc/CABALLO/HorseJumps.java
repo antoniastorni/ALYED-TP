@@ -1,8 +1,5 @@
 package CABALLO;
 
-import Algoritmos.PilasYColas.DynamicStack;
-import Algoritmos.PilasYColas.IsEmptyException;
-
 public class HorseJumps {
     private String[][] chessTable = new String[][]{
             {"A1","B1","C1","D1","E1","F1","G1","H1"},
@@ -128,12 +125,5 @@ public class HorseJumps {
         } catch (IsEmptyException e) {
             e.getMessage();
         }
-    }
-
-    public void printAllPaths() {
-    }
-
-    public boolean corroboringPossibleEntry() {
-
     }
 }
