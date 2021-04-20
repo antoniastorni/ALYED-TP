@@ -1,5 +1,8 @@
 package Arboles;
 
+import Queue.DynamicQueue;
+import Queue.IsEmptyException;
+
 import java.util.ArrayList;
 
 public class BinaryTreeAPI<T> {
@@ -65,20 +68,12 @@ public class BinaryTreeAPI<T> {
     public  int completeNodes(BinaryTree<T> a){
         if(a.isEmpty())
             return 0;
-/*        if (a.getLeft().isEmpty())
-            return completeNodes(a.getRight());
-        if (a.getRight().isEmpty())
-            return completeNodes(a.getLeft());*/
         return 1 + completeNodes(a.getRight()) + completeNodes(a.getLeft());
     }
 
     /* Informa si un árbol binario está lleno */
     boolean lleno(BinaryTree<T> a ){
         return true;
-    }
-
-    int getLevel(BinaryTree<T> a){
-        return 1;
     }
 
     /* Un árbol de valores enteros es estable si es vacío, consta de un único elemento
@@ -126,8 +121,6 @@ public class BinaryTreeAPI<T> {
         else
             return 1 + peso(a.getLeft())+peso(a.getRight());
     }
-    //numero de hoja, numero de elem en un nivel dado, altura
-
 
     // devuelve el numero de veces uqe aparece un elemento dado
     public  int ocurrencias(BinaryTree<T> a, T o){
@@ -140,5 +133,61 @@ public class BinaryTreeAPI<T> {
             return ocurrencias(a.getLeft(),o)+ocurrencias(a.getRight(),o);
     }
 
+    //devuelve el numero de hojas de un arbol
+    public int numeroHojas(BinaryTree a) {
+        if (a.getLeft().isEmpty() && a.getRight().isEmpty()) {
+            return 1;
+        } else {
+            return numeroHojas(a.getRight()) + numeroHojas(a.getLeft());
+        }
+    }
 
-}
+    //devuelve el numer ode elementos en un nivel dado
+    public int elementospornivel(BinaryTree a, int nivel) {
+/*        DynamicQueue<BinaryTree> q = new DynamicQueue<>();
+        q.enqueue(a);
+        while(!q.isEmpty()) {
+            a = q.peek();
+            if (comparador == nivel) {
+                counter++;
+                comparador = 0;
+            }
+            if (!a.getLeft().isEmpty()) {
+                q.enqueue(a.getLeft());
+            }
+            if (!a.getRight().isEmpty()) {
+                q.enqueue(a.getRight());
+            }
+            comparador++;
+            q.dequeue();
+        }
+        return counter;*/
+        if (nivel == 1)
+            return 1;
+        if (a.getRight().isEmpty() || a.getLeft().isEmpty()) {
+            return 0;
+        }
+            return elementospornivel(a.getRight(), nivel--) + elementospornivel(a.getLeft(), nivel--);
+    }
+
+        //devuelve la altura, preg alexis xq sabemos q esta mal
+        public int altura (BinaryTree a) throws IsEmptyException {
+            DynamicQueue<BinaryTree> q = new DynamicQueue<>();
+            q.enqueue(a);
+            int counter = 0;
+            while (!q.isEmpty()) {
+                a = q.peek();
+                counter++;
+                if (!a.getLeft().isEmpty()) {
+                    q.enqueue(a.getLeft());
+                }
+                if (!a.getRight().isEmpty()) {
+                    q.enqueue(a.getRight());
+
+                }
+                q.dequeue();
+            }
+            return counter;
+        }
+    }
+
