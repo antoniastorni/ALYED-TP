@@ -1,5 +1,8 @@
 package Arboles;
 
+import Queue.DynamicQueue;
+import Queue.IsEmptyException;
+
 public class ShowTree {
 
     public void preorden(BinaryTree  a){
@@ -25,5 +28,17 @@ public class ShowTree {
         }
     }
 
-    public void porNiveles(){}
+    public void porNiveles(BinaryTree a) throws IsEmptyException {
+        DynamicQueue<BinaryTree> q = new DynamicQueue<>();
+        q.enqueue(a);
+        while(!q.isEmpty()) {
+            //a = frente de cola
+            System.out.println( a.getRoot());
+            if (!a.getLeft().isEmpty())
+                q.enqueue(a.getLeft());
+            if (!a.getRight().isEmpty())
+                q.enqueue(a.getRight());
+            q.dequeue();
+        }
+    }
 }
