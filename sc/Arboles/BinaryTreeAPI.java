@@ -126,5 +126,6 @@ public class BinaryTreeAPI<T> {
         else
             return 1 + size(a.getLeft())+size(a.getRight());
     }
+    //numero de hoja, numero de elem en un nivel dado, altura
 
 }
