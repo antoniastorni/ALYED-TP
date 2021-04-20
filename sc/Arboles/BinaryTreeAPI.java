@@ -6,7 +6,7 @@ public class BinaryTreeAPI<T> {
 
     /* Indica si dos árboles binarios son iguales */
     boolean equals(BinaryTree<T> a1, BinaryTree<T> a2) {
-        if (equalsAuxiliar(a1, a2) == size(a1) && size(a1) == size(a2))
+        if (equalsAuxiliar(a1, a2) == peso(a1) && peso(a1) == peso(a2))
             return true;
         return false;
     }
@@ -23,7 +23,7 @@ public class BinaryTreeAPI<T> {
     /* Informa si los árboles binarios a1 y a2 son isomorfos */
     boolean isomorfos(BinaryTree<T> a1, BinaryTree<T> a2 ){
         int numberOfIsomorfos = isomorfosAuxiliar(a1, a2);
-        if (numberOfIsomorfos == size(a1) && numberOfIsomorfos == size(a2))
+        if (numberOfIsomorfos == peso(a1) && numberOfIsomorfos == peso(a2))
             return true;
         return false;
     }
@@ -56,7 +56,7 @@ public class BinaryTreeAPI<T> {
 
     /* Indica si un árbol binario es completo */
     boolean completo(BinaryTree<T> a ){
-        if(completeNodes(a) == size(a))
+        if(completeNodes(a) == peso(a))
             return true;
         return false;
     }
@@ -120,11 +120,24 @@ public class BinaryTreeAPI<T> {
     }
 
     //devuelve el tamaño del arbol (peso)
-    public  int size (BinaryTree<T> a){
+    public  int peso (BinaryTree<T> a){
         if(a.isEmpty())
             return 0;
         else
-            return 1 + size(a.getLeft())+size(a.getRight());
+            return 1 + peso(a.getLeft())+peso(a.getRight());
     }
+
+
+    // devuelve el numero de veces uqe aparece un elemento dado
+    public  int ocurrencias(BinaryTree<T> a, T o){
+        if(a.isEmpty())
+            return 0;
+        if(a.getRoot().equals(o))
+            return
+                    1 + ocurrencias(a.getLeft(),o)+ocurrencias(a.getRight(),o);
+        else
+            return ocurrencias(a.getLeft(),o)+ocurrencias(a.getRight(),o);
+    }
+
 
 }
