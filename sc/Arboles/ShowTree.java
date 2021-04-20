@@ -32,7 +32,7 @@ public class ShowTree {
         DynamicQueue<BinaryTree> q = new DynamicQueue<>();
         q.enqueue(a);
         while(!q.isEmpty()) {
-            //a = frente de cola
+            a = q.dequeue();
             System.out.println( a.getRoot());
             if (!a.getLeft().isEmpty())
                 q.enqueue(a.getLeft());
