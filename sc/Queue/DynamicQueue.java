@@ -1,6 +1,6 @@
 package Queue;
 
-public class DynamicQueue<T> implements QueueInterface<T>{
+public class DynamicQueue<T>{
     private Node<T> first;
     private Node<T> last;
     private int size;
@@ -11,7 +11,7 @@ public class DynamicQueue<T> implements QueueInterface<T>{
         size = 0;
     }
 
-    @Override //entra al final
+    //entra al final
     public void enqueue(T element) {
         Node<T> newNode = new Node<T>(element);
         if(isEmpty()) {
@@ -24,7 +24,7 @@ public class DynamicQueue<T> implements QueueInterface<T>{
         size++;
     }
 
-    @Override //sale el primero
+    //sale el primero
     public T dequeue() throws IsEmptyException {
         if(isEmpty()) {
             throw new IsEmptyException();
@@ -35,13 +35,17 @@ public class DynamicQueue<T> implements QueueInterface<T>{
         return (T) toReturn.getElement();
     }
 
-    @Override
+
     public boolean isEmpty() {
         return size == 0 && first.getPointer() == null;
     }
 
-    @Override
+
     public int size() {
         return size;
+    }
+
+    public T peek(){
+        return (T)first.getPointer().getElement();
     }
 }
