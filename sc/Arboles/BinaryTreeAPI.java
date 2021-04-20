@@ -126,6 +126,7 @@ public class BinaryTreeAPI<T> {
         else
             return 1 + peso(a.getLeft())+peso(a.getRight());
     }
+    //numero de hoja, numero de elem en un nivel dado, altura
 
 
     // devuelve el numero de veces uqe aparece un elemento dado
