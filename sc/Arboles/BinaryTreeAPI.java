@@ -79,12 +79,26 @@ public class BinaryTreeAPI<T> {
     /* Un árbol de valores enteros es estable si es vacío, consta de un único elemento
     o para todo elemento de la estructura su padre es mayor. */
     boolean estable( BinaryTree<T> a ) {
-        return true;
+        if (a.isEmpty()){
+            return true;
+        }else if(a.getRoot().compareTo(a.getLeft().getRoot()) > 0 && a.getRoot().compareTo(a.getRight().getRoot()) >0){
+            return estable(a.getRight()) && estable(a.getLeft());
+        }
+            return false;
     }
 
     /* Indica si el árbol a2 ocurre en el árbol a1 */
     boolean ocurreArbin(BinaryTree<T> a1, BinaryTree<T> a2 ){
-        return true;
+        if (a1.isEmpty()){
+            return true;
+        }
+        if(a2.isEmpty()){
+            return false;
+        }else if (a2.getRoot().compareTo(a1.getRoot()) == 0){
+            return ocurreArbin(a1.getLeft(), a2.getLeft()) && ocurreArbin(a1.getRight(), a2.getRight());
+        }else{
+            return ocurreArbin(a1.getLeft(), a2) && ocurreArbin(a1.getRight(), a2);
+        }
     }
 
     /* Se define frontera de un árbol binario, el conjunto formado por los elementos
