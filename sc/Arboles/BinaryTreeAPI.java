@@ -189,9 +189,11 @@ public class BinaryTreeAPI<T> {
                 if (a.getRoot()%3 == 0) {
                     return a.getRoot() + sumaMultiplo3(a.getLeft()) + sumaMultiplo3(a.getRight());
                 }else{
+
                     return sumaMultiplo3(a.getLeft()) + sumaMultiplo3(a.getRight());
                 }
             }
+
             return 0;
         }
 
