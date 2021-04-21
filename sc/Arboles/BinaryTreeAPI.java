@@ -174,5 +174,28 @@ public class BinaryTreeAPI<T> {
             }
 
         }
-    }
+
+        //14a
+
+        public int sumageneral(BinaryTree<Integer> a){
+            if(!a.isEmpty()) {
+                return a.getRoot() + sumageneral(a.getLeft()) + sumageneral(a.getRight());
+            }
+            return 0;
+        }
+
+        public int sumaMultiplo3(BinaryTree<Integer> a){
+            if(!a.isEmpty()) {
+                if (a.getRoot()%3 == 0) {
+                    return a.getRoot() + sumaMultiplo3(a.getLeft()) + sumaMultiplo3(a.getRight());
+                }else{
+                    return sumaMultiplo3(a.getLeft()) + sumaMultiplo3(a.getRight());
+                }
+            }
+            return 0;
+        }
+
+
+
+}
 
