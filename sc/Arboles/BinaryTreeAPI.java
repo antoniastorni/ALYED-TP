@@ -72,13 +72,13 @@ public class BinaryTreeAPI<T> {
     }
 
     /* Informa si un árbol binario está lleno */
-    boolean lleno(BinaryTree<T> a ){
+    boolean lleno(BinaryTree<T> a ) throws IsEmptyException {
         return numeroHojas(a) == Math.pow(2, altura(a)) -1;
     }
 
     /* Un árbol de valores enteros es estable si es vacío, consta de un único elemento
     o para todo elemento de la estructura su padre es mayor. */
-    boolean estable( BinaryTree<T> a ) {
+    boolean estable( BinaryTree<Integer> a ) {
         if (a.isEmpty()){
             return true;
         }else if(a.getRoot().compareTo(a.getLeft().getRoot()) > 0 && a.getRoot().compareTo(a.getRight().getRoot()) >0){
@@ -166,12 +166,13 @@ public class BinaryTreeAPI<T> {
     }
 
         //devuelve la altura, preg alexis xq sabemos q esta mal
-        public int altura (BinaryTree a) {
-            if(a.getRoot()==null){
+        public int altura (BinaryTree a) throws IsEmptyException {
+            if(a.isEmpty()){
                 return 0;
             }else{
-                return 1 + altura(a.getRight()) < altura(a.getLeft()) ? altura(a.getLeft()):altura(a.getRight());
+                return 1 + altura(a.getLeft()) + altura(a.getRight());
             }
+
         }
     }
 

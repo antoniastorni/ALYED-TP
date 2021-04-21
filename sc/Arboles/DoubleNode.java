@@ -13,7 +13,5 @@ public class DoubleNode <T>{
         this.right = right;
         this.left = left;
     }
-
-
 }
 
