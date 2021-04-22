@@ -1,11 +1,15 @@
 package Arboles;
 
+
+
 public class DoubleNode <T>{
     T dato;
     DoubleNode <T> right, left;
 
     public DoubleNode(T o){
         dato = o;
+        right = null;
+        left = null;
     }
 
     public DoubleNode(T o, DoubleNode<T> left, DoubleNode<T> right){
@@ -13,5 +17,6 @@ public class DoubleNode <T>{
         this.right = right;
         this.left = left;
     }
+
 }
 

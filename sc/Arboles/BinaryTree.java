@@ -1,9 +1,8 @@
 package Arboles;
 
-import java.util.Objects;
 
 public class BinaryTree<T>{
-    private DoubleNode<T> root;
+     DoubleNode<T> root;
 
     public BinaryTree(){
         root = null;
@@ -26,7 +25,7 @@ public class BinaryTree<T>{
         return root.dato;
     }
 
-    //ojo que pedís el arbol
+
     public BinaryTree<T> getLeft() {
         BinaryTree<T> t = new BinaryTree<>();
         t.root = root.left;
@@ -39,24 +38,4 @@ public class BinaryTree<T>{
         return t;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        // self check
-        if (this == o)
-            return true;
-        // null check
-        if (o == null)
-            return false;
-        // type check and cast
-        if (getClass() != o.getClass())
-            return false;
-        BinaryTree<T> tree = (BinaryTree<T>) o;
-        // field comparison
-        return Objects.equals(root, tree.root);
-    }
 }
