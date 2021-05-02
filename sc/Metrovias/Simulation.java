@@ -1,7 +1,7 @@
 package Metrovias;
 
-import Algoritmos.PilasYColas.DynamicStack;
-import Algoritmos.PilasYColas.IsEmptyException;
+import QueueAndStack.DynamicStack;
+import QueueAndStack.IsEmptyException;
 
 public class Simulation {
     private Window[] windows;

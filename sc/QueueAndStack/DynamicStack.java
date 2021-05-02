@@ -1,4 +1,4 @@
-package Queue;
+package QueueAndStack;
 
 public class DynamicStack<T> implements StackInterface<T>{
     private int size;

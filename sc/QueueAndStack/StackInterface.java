@@ -1,4 +1,4 @@
-package Queue;
+package QueueAndStack;
 
 public interface StackInterface<T> {
     

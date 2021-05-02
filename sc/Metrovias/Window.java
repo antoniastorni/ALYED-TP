@@ -1,7 +1,7 @@
 package Metrovias;
 
-import Algoritmos.PilasYColas.DynamicQueue;
-import Algoritmos.PilasYColas.IsEmptyException;
+import QueueAndStack.DynamicQueue;
+import QueueAndStack.IsEmptyException;
 
 public class Window {
     private DynamicQueue<People> waitingQueue;

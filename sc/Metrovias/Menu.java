@@ -1,6 +1,6 @@
 package Metrovias;
 
-import Algoritmos.PilasYColas.StackInterface;
+import QueueAndStack.StackInterface;
 
 import java.util.Scanner;
 
