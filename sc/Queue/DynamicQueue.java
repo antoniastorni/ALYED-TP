@@ -1,6 +1,6 @@
 package Queue;
 
-public class DynamicQueue<T>{
+public class DynamicQueue<T> implements QueueInterface<T>{
     private Node<T> first;
     private Node<T> last;
     private int size;
