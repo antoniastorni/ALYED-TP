@@ -1,4 +1,4 @@
-package Queue;
+package QueueAndStack;
 
 public class IsEmptyException extends Exception {
     @Override
