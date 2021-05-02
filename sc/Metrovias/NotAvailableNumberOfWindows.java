@@ -6,3 +6,4 @@ public class NotAvailableNumberOfWindows extends Exception{
         return "Number of windows not allowed. Please, enter a valid number.";
     }
 }
+
