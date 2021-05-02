@@ -1,7 +1,7 @@
 package Arboles;
 
-import Queue.DynamicQueue;
-import Queue.IsEmptyException;
+import QueueAndStack.DynamicQueue;
+import QueueAndStack.IsEmptyException;
 
 public class ShowTree {
 

@@ -1,6 +1,6 @@
 package Arboles;
 
-import Queue.IsEmptyException;
+import QueueAndStack.IsEmptyException;
 
 public class Main {
 
