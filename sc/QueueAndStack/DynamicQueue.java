@@ -1,4 +1,4 @@
-package Queue;
+package QueueAndStack;
 
 public class DynamicQueue<T> implements QueueInterface<T>{
     private Node<T> first;

@@ -1,4 +1,4 @@
-package Queue;
+package QueueAndStack;
 
 public class Node<T> {
     private T element;
