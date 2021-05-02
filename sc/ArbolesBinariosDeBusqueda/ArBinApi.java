@@ -9,4 +9,12 @@ public class ArBinApi <T> {
             inorden(a.getRight());
         }
     }
+
+    public void inordenOrganism (BinarySearchTree <T> a)throws TreeIsEmptyException{
+        if (!a.isEmpty()){
+            inordenOrganism(a.getLeft());
+            System.out.println(((Organism) a.getRoot()).getCode());
+            inordenOrganism(a.getRight());
+        }
+    }
 }
