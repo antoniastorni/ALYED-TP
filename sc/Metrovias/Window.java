@@ -18,7 +18,6 @@ public class Window {
 
     public void addPeople(People people) {
         waitingQueue.enqueue(people);
-        //manage times?
     }
 
     //according to current time, people is attended by the window
@@ -27,6 +26,8 @@ public class Window {
         numberOfPeopleProceeded++;
         raisedMoney = raisedMoney + 10;
         sumOfDeltaPeopleTimeInSeconds = sumOfDeltaPeopleTimeInSeconds + people.getDeltaOfTime(currentTimeInSeconds);
+        int ticketNumberGenerator = (int) (10000 * Math.random() + 1000 * Math.random() + 10 * Math.random());
+        people.giveTicket(new Ticket(ticketNumberGenerator, people.getInitialTimeInSeconds(), currentTimeInSeconds));
         return people;
     }
 

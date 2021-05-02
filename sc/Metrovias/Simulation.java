@@ -28,16 +28,12 @@ public class Simulation {
             }
         }
 
-//quién da el ticket a la persona????
-
         //people in a window is handled
     public void manageWindowAttention() {
         try {
             for (int i = 0; i < numberOfWindows; i++) {
                 if ((int) (100 * Math.random()) < 50) { //50% probability of being attended
                     People peopleOut = windows[i].peopleProceeding(currentTimeInSeconds);
-                    int ticketNumberGenerator = (int) (10000 * Math.random()); //maybe could be better
-                    peopleOut.giveTicket(new Ticket(ticketNumberGenerator, peopleOut.getInitialTimeInSeconds(), currentTimeInSeconds));
                     attendedPeople.stack(peopleOut);
                 }
             }
