@@ -24,4 +24,21 @@ public class OrganismABM {
         ArBinApi<Organism> b = new ArBinApi<>();
         b.inordenOrganism(a);
     }
+
+    public void modifyDescriptionOfOrganism(Comparable<Organism> organism, BinarySearchTree<Organism> a, String newDescription) throws ElementBelongsToTreeException {
+        if (a.exists(organism)) {
+            a.search(organism).setDescription(newDescription);
+        }
+    }
+
+    public void modifySizeOfOrganism(Comparable<Organism> organism, BinarySearchTree<Organism> a, int newSize) throws ElementBelongsToTreeException {
+        if (a.exists(organism)) {
+            a.search(organism).setSize(newSize);
+        }
+    }
+    public void modifyTypeOfOrganism(Comparable<Organism> organism, BinarySearchTree<Organism> a, String newType) throws ElementBelongsToTreeException {
+        if (a.exists(organism)) {
+            a.search(organism).setType(newType);
+        }
+    }
 }

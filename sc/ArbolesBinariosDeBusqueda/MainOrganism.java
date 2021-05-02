@@ -16,13 +16,13 @@ public class MainOrganism {
             BinarySearchTree<Organism> tree = abm.fromListToTree(array);
             Organism organism = new Organism("HADEW", "Bacteria", "fkjflwe", 23);
             abm.sortedInform(tree);
-            System.out.println("");
+            System.out.println("\n");
             abm.insertNewOrganism(organism, tree);
             abm.sortedInform(tree);
-            System.out.println("");
+            System.out.println("\n");
             abm.deleteOrganism(organism, tree);
             abm.sortedInform(tree);
-            System.out.println("");
+            System.out.println("\n");
         } catch (ElementBelongsToTreeException | TreeIsEmptyException | ElementdontexistException e) {
             System.out.println(e.getMessage());
         }

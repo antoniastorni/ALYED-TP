@@ -13,7 +13,10 @@ public class ArBinApi <T> {
     public void inordenOrganism (BinarySearchTree <T> a)throws TreeIsEmptyException{
         if (!a.isEmpty()){
             inordenOrganism(a.getLeft());
-            System.out.println(((Organism) a.getRoot()).getCode());
+            System.out.println("Code: " + ((Organism) a.getRoot()).getCode() +
+                    "\nType: " + ((Organism) a.getRoot()).getType() +
+                    "\nDescription: " + ((Organism) a.getRoot()).getDescription() +
+                    "\nSize: " + ((Organism) a.getRoot()).getSize() + "\n");
             inordenOrganism(a.getRight());
         }
     }

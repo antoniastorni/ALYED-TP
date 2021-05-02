@@ -2,9 +2,9 @@ package ArbolesBinariosDeBusqueda;
 
 public class Organism implements Comparable<Organism>{
     private final String code;
-    private final String type;
-    private final String description;
-    private final int size;
+    private String type;
+    private String description;
+    private int size;
 
 
     public Organism(String code, String type, String description, int size) {
@@ -21,5 +21,29 @@ public class Organism implements Comparable<Organism>{
 
     public String getCode() {
         return code;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
