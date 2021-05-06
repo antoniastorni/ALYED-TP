@@ -34,6 +34,10 @@ public class Menu {
                 case 2: {
                     float[] averageWaitingTimePerWindow  = newSimulation.averageWaitingTime();
                     float[] totalRaisedMoneyPerWindow = newSimulation.raisedMoney();
+                    for (int i = 0; i < numberOfWindows; i++) {
+                        System.out.println("Promedio tiempo de espera por ventanilla nro. " + (i+1) + averageWaitingTimePerWindow[i] +
+                                "\nPromedio de dinero recaudado por ventanilla nro. " + (i+1) + totalRaisedMoneyPerWindow[i]);
+                    }
                     PrintStack(newSimulation.attendedPeople());
                     System.exit(0);
                     break;
