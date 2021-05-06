@@ -26,15 +26,17 @@ public class Menu {
                 sc.nextLine(); // para equilibrar el error de nextInt
             } while (option != 1 && option != 2);
             switch (option) {
-                case 1 -> {
+                case 1: {
                     newSimulation.manageArrivingPeople();
                     newSimulation.manageWindowAttention();
+                    break;
                 }
-                case 2 -> {
+                case 2: {
                     float[] averageWaitingTimePerWindow  = newSimulation.averageWaitingTime();
                     float[] totalRaisedMoneyPerWindow = newSimulation.raisedMoney();
                     PrintStack(newSimulation.attendedPeople());
                     System.exit(0);
+                    break;
                 }
             }
         }
