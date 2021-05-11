@@ -136,11 +136,9 @@ public class HorseJumps {
     //tengo las variables initialNumberOfJumps e initialPosition
     public void printAllPosiblePaths() {
         DynamicStack<String>[] allPaths = new DynamicStack[initialNumberOfJumps];
-        while (1 < initialNumberOfJumps) {
-
+        for (int i = 0; i < initialNumberOfJumps; i++) {
+            allPaths[i] = new DynamicStack<>();
         }
-
-
         analizingPossibleJumps(getIndexOfRow(initialPosition), getIndexOfColumn(initialPosition),allPaths);
     }
 }
