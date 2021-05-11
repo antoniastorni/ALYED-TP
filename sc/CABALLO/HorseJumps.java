@@ -141,4 +141,16 @@ public class HorseJumps {
         }
         analizingPossibleJumps(getIndexOfRow(initialPosition), getIndexOfColumn(initialPosition),allPaths);
     }
+
+    public void PrintStack(int i) throws IsEmptyException{ // empieza en 0
+        if(i < (stacksOfJumps.length - 1 )){
+            System.out.print(stacksOfJumps[i].peek());
+            PrintStack(i++);
+        }
+
+        if(i == stacksOfJumps.length){
+            stacksOfJumps[i].pop();
+            PrintStack(0);
+        }
+    }
 }
