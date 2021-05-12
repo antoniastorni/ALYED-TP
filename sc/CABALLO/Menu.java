@@ -13,7 +13,7 @@ public class Menu {
 
         HorseJumps horseMovement = new HorseJumps(numberOfJumps, chessBox.toUpperCase().trim());
         while (true) {
-            System.out.println("\n*************************************\n");
+            System.out.println("\n\n*************************************\nMenu");
             System.out.println("\n• 1: Se procede a realizar el siguiente salto.\n" +
                     "• 2: Mostrar el contenido de las pilas.\n" +
                     "• 3: Salir.\n");
@@ -36,6 +36,7 @@ public class Menu {
                     horseMovement.printAllStacks();
                     break;
                 case 3:
+                    horseMovement.printAllPosiblePaths();
                     System.exit(0);
             }
         }
