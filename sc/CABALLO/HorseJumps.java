@@ -143,11 +143,10 @@ public class HorseJumps {
 
     //NO LO IMPRIME EN ORDEN LIKE WHAAT QUE HACE ESTE MÉTODO LOQUILLIN   :B
     private void printStack(int i, String aPath) throws IsEmptyException { // empieza en 0
-        if (stacksOfJumps[i].isEmpty()) {
-            stacksOfJumps[i - 1].pop();
+        if (stacksOfJumps[i].isEmpty() && !stacksOfJumps[0].isEmpty()) {
+            stacksOfJumps[i - 1].pop(); //indice -1?
             fillStack(stacksOfJumps[i - 1].peek(), i);
             printStack(0, "");
-
         }
         if (i == stacksOfJumps.length-1) {
             System.out.print(aPath + " " + stacksOfJumps[i].peek() + "\n");
