@@ -51,28 +51,28 @@ public class HorseJumps {
     }
 
     private void analizingPossibleJumps(int currentIndexRow, int currentIndexColumn, DynamicStack<String>[] stack, int index, boolean print) {
-        if ((currentIndexRow - 1 >= 0 && currentIndexRow - 1 < 9) && (currentIndexColumn + 2 > 0 && currentIndexColumn + 2 < 9)) {
+        if ((currentIndexRow - 1 >= 0 && currentIndexRow - 1 < 8) && (currentIndexColumn + 2 >= 0 && currentIndexColumn + 2 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn + 2), stack, index, print);
         }
-        if ((currentIndexRow + 1 >= 0 && currentIndexRow + 1 < 9) && (currentIndexColumn + 2 > 0 && currentIndexColumn + 2 < 9)) {
+        if ((currentIndexRow + 1 >= 0 && currentIndexRow + 1 < 8) && (currentIndexColumn + 2 >= 0 && currentIndexColumn + 2 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn + 2), stack, index, print);
         }
-        if ((currentIndexRow + 1 > 0 && currentIndexRow + 1 < 9) && (currentIndexColumn - 2 > 0 && currentIndexColumn - 2 < 9)) {
+        if ((currentIndexRow + 1 >= 0 && currentIndexRow + 1 < 8) && (currentIndexColumn - 2 >= 0 && currentIndexColumn - 2 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn - 2), stack, index, print);
         }
-        if ((currentIndexRow - 1 > 0 && currentIndexRow - 1 < 9) && (currentIndexColumn - 2 > 0 && currentIndexColumn - 2 < 9)) {
+        if ((currentIndexRow - 1 >= 0 && currentIndexRow - 1 < 8) && (currentIndexColumn - 2 >= 0 && currentIndexColumn - 2 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn - 2), stack, index, print);
         }
-        if ((currentIndexRow + 2 > 0 && currentIndexRow + 2 < 9) && (currentIndexColumn - 1 > 0 && currentIndexColumn - 1 < 9)) {
+        if ((currentIndexRow + 2 >= 0 && currentIndexRow + 2 < 8) && (currentIndexColumn - 1 >= 0 && currentIndexColumn - 1 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn - 1), stack, index, print);
         }
-        if ((currentIndexRow - 2 > 0 && currentIndexRow - 2 < 9) && (currentIndexColumn - 1 > 0 && currentIndexColumn - 1 < 9)) {
+        if ((currentIndexRow - 2 >= 0 && currentIndexRow - 2 < 8) && (currentIndexColumn - 1 >= 0 && currentIndexColumn - 1 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn - 1), stack, index, print);
         }
-        if ((currentIndexRow + 2 > 0 && currentIndexRow + 2 < 9) && (currentIndexColumn + 1 > 0 && currentIndexColumn + 1 < 9)) {
+        if ((currentIndexRow + 2 >= 0 && currentIndexRow + 2 < 8) && (currentIndexColumn + 1 >= 0 && currentIndexColumn + 1 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn + 1), stack, index, print);
         }
-        if ((currentIndexRow - 2 > 0 && currentIndexRow - 2 < 9) && (currentIndexColumn + 1 > 0 && currentIndexColumn + 1 < 9)) {
+        if ((currentIndexRow - 2 >= 0 && currentIndexRow - 2 < 8) && (currentIndexColumn + 1 >= 0 && currentIndexColumn + 1 < 8)) {
             savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn + 1), stack, index, print);
         }
     }
@@ -143,7 +143,7 @@ public class HorseJumps {
 
     //NO LO IMPRIME EN ORDEN LIKE WHAAT QUE HACE ESTE MÉTODO LOQUILLIN   :B
     private void printStack(int i, String aPath) throws IsEmptyException { // empieza en 0
-        if (stacksOfJumps[i].isEmpty() && !stacksOfJumps[0].isEmpty()) {
+        if (stacksOfJumps[i].isEmpty() && !stacksOfJumps[0].isEmpty() && !stacksOfJumps[i-1].isEmpty()) {
             stacksOfJumps[i - 1].pop(); //indice -1?
             fillStack(stacksOfJumps[i - 1].peek(), i);
             printStack(0, "");
