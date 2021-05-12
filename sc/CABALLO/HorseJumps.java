@@ -143,24 +143,18 @@ public class HorseJumps {
 
     //NO LO IMPRIME EN ORDEN LIKE WHAAT QUE HACE ESTE MÉTODO LOQUILLIN   :B
     private void printStack(int i, String aPath) throws IsEmptyException { // empieza en 0
-        if (i == stacksOfJumps.length) {
-            stacksOfJumps[i - 1].pop();
-            System.out.print("the path: " + aPath);
-            printStack(0, "");
-        }
         if (stacksOfJumps[i].isEmpty()) {
             stacksOfJumps[i - 1].pop();
             fillStack(stacksOfJumps[i - 1].peek(), i);
             printStack(0, "");
-        } /*else {
-            String aPath = "";
-            for (int j = 0; j < stacksOfJumps.length-1; j++) {
-                aPath = aPath + stacksOfJumps[j].peek() + " - ";
-            }
-            aPath = aPath + stacksOfJumps[stacksOfJumps.length-1].peek();
-            System.out.println(aPath);
-        }*/
-        if (i < (stacksOfJumps.length - 1)) {
+
+        }
+        if (i == stacksOfJumps.length-1) {
+            System.out.print(aPath + " " + stacksOfJumps[i].peek() + "\n");
+            stacksOfJumps[i].pop();
+            printStack(0, "");
+        }
+        if (i < (stacksOfJumps.length-1)) {
             aPath = aPath + " " + stacksOfJumps[i].peek();
             printStack(++i, aPath);
         }
