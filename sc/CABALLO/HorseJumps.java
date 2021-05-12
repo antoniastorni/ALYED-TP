@@ -107,11 +107,14 @@ public class HorseJumps {
 
     //prints all stacks
     public void printAllStacks() {
-        DynamicStack<String>[] auxiliarStack = stacksOfJumps;
+        DynamicStack<String>[] auxiliarStack = new DynamicStack[stacksOfJumps.length];
+        for (int i = 0; i < stacksOfJumps.length; i++) {
+            auxiliarStack[i] = stacksOfJumps[i];
+        }
         int index = 0;
         try {
             while (index < indexOfStackOfJumps) {
-                System.out.println("\n----------------------");          //POR ALGUNA RAZON SI LLAMO AL MÉTODO + DE 2 VECES BORRA LAS PILAS ANTERIORES
+                System.out.println("\n----------------------");
                 System.out.println("Pila" + (index+1) + ": ");
                 while (!auxiliarStack[index].isEmpty()) {
                     System.out.print(auxiliarStack[index].peek() + " ");
@@ -141,12 +144,18 @@ public class HorseJumps {
         }
     }
 
-    //NO LO IMPRIME EN ORDEN LIKE WHAAT QUE HACE ESTE MÉTODO LOQUILLIN   :B
     private void printStack(int i, String aPath) throws IsEmptyException { // empieza en 0
-        if (stacksOfJumps[i].isEmpty() && !stacksOfJumps[0].isEmpty() && !stacksOfJumps[i-1].isEmpty()) {
-            stacksOfJumps[i - 1].pop(); //indice -1?
-            fillStack(stacksOfJumps[i - 1].peek(), i);
-            printStack(0, "");
+        if(stacksOfJumps[0].isEmpty()){
+            System.exit(0);
+        }
+        if (stacksOfJumps[i].isEmpty()) {
+            stacksOfJumps[i - 1].pop();
+            if(!stacksOfJumps[i-1].isEmpty()){
+                fillStack(stacksOfJumps[i - 1].peek(), i);
+                printStack(0, "");
+            }else{
+                printStack(0,"");
+            }
         }
         if (i == stacksOfJumps.length-1) {
             System.out.print(aPath + " " + stacksOfJumps[i].peek() + "\n");
