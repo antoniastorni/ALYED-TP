@@ -2,7 +2,7 @@ package CABALLO;
 
 public class Node<T> {
     private T element;
-    private Node pointer;
+    public Node pointer;
 
     Node(T element, Node pointer) {
         this.element = element;

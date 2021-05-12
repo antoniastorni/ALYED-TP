@@ -153,4 +153,15 @@ public class HorseJumps {
             PrintStack(0);
         }
     }
-}
+    public void lastStackIsEmpty() throws IsEmptyException {
+        DynamicStack<String>[] allPaths = new DynamicStack[initialNumberOfJumps];
+        for(int i =0; i< initialNumberOfJumps; i++) {
+            if (allPaths[allPaths.length-1].isEmpty()) {
+                allPaths[allPaths.length - 2].pop();
+            }
+            printAllPosiblePaths();
+            //PrintStack();
+            }
+        }
+    }
+
