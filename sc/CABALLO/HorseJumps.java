@@ -43,44 +43,45 @@ public class HorseJumps {
     //prints possible movements
     public void printPossibleJumps() throws NoMoreAvailableMovementsException {
         if (indexOfStackOfJumps < stacksOfJumps.length) {
-            analizingPossibleJumps(getIndexOfRow(currentPosition), getIndexOfColumn(currentPosition), stacksOfJumps, indexOfStackOfJumps);
+            analizingPossibleJumps(getIndexOfRow(currentPosition), getIndexOfColumn(currentPosition), stacksOfJumps, indexOfStackOfJumps, true);
             indexOfStackOfJumps++;
         } else {
             throw new NoMoreAvailableMovementsException();
         }
     }
 
-    private void analizingPossibleJumps(int currentIndexRow, int currentIndexColumn, DynamicStack<String>[] stack, int index) {
+    private void analizingPossibleJumps(int currentIndexRow, int currentIndexColumn, DynamicStack<String>[] stack, int index, boolean print) {
         if ((currentIndexRow - 1 >= 0 && currentIndexRow - 1 < 9) && (currentIndexColumn + 2 > 0 && currentIndexColumn + 2 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn + 2), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn + 2), stack, index, print);
         }
         if ((currentIndexRow + 1 >= 0 && currentIndexRow + 1 < 9) && (currentIndexColumn + 2 > 0 && currentIndexColumn + 2 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn + 2), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn + 2), stack, index, print);
         }
         if ((currentIndexRow + 1 > 0 && currentIndexRow + 1 < 9) && (currentIndexColumn - 2 > 0 && currentIndexColumn - 2 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn - 2), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow + 1, currentIndexColumn - 2), stack, index, print);
         }
         if ((currentIndexRow - 1 > 0 && currentIndexRow - 1 < 9) && (currentIndexColumn - 2 > 0 && currentIndexColumn - 2 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn - 2), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow - 1, currentIndexColumn - 2), stack, index, print);
         }
         if ((currentIndexRow + 2 > 0 && currentIndexRow + 2 < 9) && (currentIndexColumn - 1 > 0 && currentIndexColumn - 1 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn - 1), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn - 1), stack, index, print);
         }
         if ((currentIndexRow - 2 > 0 && currentIndexRow - 2 < 9) && (currentIndexColumn - 1 > 0 && currentIndexColumn - 1 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn - 1), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn - 1), stack, index, print);
         }
         if ((currentIndexRow + 2 > 0 && currentIndexRow + 2 < 9) && (currentIndexColumn + 1 > 0 && currentIndexColumn + 1 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn + 1), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow + 2, currentIndexColumn + 1), stack, index, print);
         }
         if ((currentIndexRow - 2 > 0 && currentIndexRow - 2 < 9) && (currentIndexColumn + 1 > 0 && currentIndexColumn + 1 < 9)) {
-            savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn + 1), stack, index);
+            savingJumpInStack(getBoxName(currentIndexRow - 2, currentIndexColumn + 1), stack, index, print);
         }
     }
 
     //fills current stack with possible jumps in a movement
-    private void savingJumpInStack(String box, DynamicStack<String>[] stack, int index) {
+    private void savingJumpInStack(String box, DynamicStack<String>[] stack, int index, boolean toPrint) {
         stack[index].stack(box);
-        System.out.println(box);
+        if (toPrint)
+            System.out.println(box);
     }
 
     //returns index of row filA. ex. "B5" returns 5
@@ -135,13 +136,18 @@ public class HorseJumps {
     private void fillStack(String positionAuxiliary, int i) {
         if (i < stacksOfJumps.length) {
             stacksOfJumps[i] = new DynamicStack<>();
-            analizingPossibleJumps(getIndexOfRow(positionAuxiliary), getIndexOfColumn(positionAuxiliary), stacksOfJumps, i);
+            analizingPossibleJumps(getIndexOfRow(positionAuxiliary), getIndexOfColumn(positionAuxiliary), stacksOfJumps, i, false);
             fillStack(stacksOfJumps[i].peek(), ++i);
         }
     }
 
     //NO LO IMPRIME EN ORDEN LIKE WHAAT QUE HACE ESTE MÉTODO LOQUILLIN   :B
     private void printStack(int i, String aPath) throws IsEmptyException { // empieza en 0
+        if (i == stacksOfJumps.length) {
+            stacksOfJumps[i - 1].pop();
+            System.out.print("the path: " + aPath);
+            printStack(0, "");
+        }
         if (stacksOfJumps[i].isEmpty()) {
             stacksOfJumps[i - 1].pop();
             fillStack(stacksOfJumps[i - 1].peek(), i);
@@ -157,11 +163,6 @@ public class HorseJumps {
         if (i < (stacksOfJumps.length - 1)) {
             aPath = aPath + " " + stacksOfJumps[i].peek();
             printStack(++i, aPath);
-        }
-        if (i == stacksOfJumps.length) {
-            stacksOfJumps[i - 1].pop();
-            System.out.print(aPath);
-            printStack(0, "");
         }
     }
 }

@@ -29,7 +29,7 @@ public class Menu {
                         String nextMove = sc.nextLine();
                         horseMovement.chooseNextJump(nextMove.toUpperCase().trim());
                     } catch (NoMoreAvailableMovementsException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 2:
