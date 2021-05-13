@@ -106,13 +106,13 @@ public class HorseJumps {
     }
 
     //prints all stacks
+    //Cuando se imprimen las pilas más de una vez se borran los valores de stacksOfJumps y no sabemos porqué, ya que
+    //no se modifica dentro del método. Si se hacen la cantidad de saltos y al final se imprimen las pilas se muestran por
+    //pantalla correctamente :(
     public void printAllStacks() {
-        DynamicStack<String>[] auxiliarStack = new DynamicStack[stacksOfJumps.length];
-        for (int i = 0; i < stacksOfJumps.length; i++) {
-            auxiliarStack[i] = stacksOfJumps[i];
-        }
-        int index = 0;
         try {
+            DynamicStack<String>[] auxiliarStack = stacksOfJumps;
+            int index = 0;
             while (index < indexOfStackOfJumps) {
                 System.out.println("\n----------------------");
                 System.out.println("Pila" + (index+1) + ": ");
@@ -122,7 +122,7 @@ public class HorseJumps {
                 }
                 index++;
             }
-        } catch (Exception e) {
+        } catch (IsEmptyException e) {
             System.out.println(e.getMessage());
         }
     }
