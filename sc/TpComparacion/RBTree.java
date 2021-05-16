@@ -11,7 +11,7 @@ public class RBTree<T> {
     private RBNodoDoble<T> parent;
     private RBNodoDoble<T> grand;
     private RBNodoDoble<T> great;
-
+    private Integer contadorDeBusqueda;
 
     public RBTree() {
         root = null;
@@ -19,6 +19,7 @@ public class RBTree<T> {
         nullNode.izq = nullNode.der = nullNode;
         header = new RBNodoDoble<>( null );
         header.izq = header.der = nullNode;
+        contadorDeBusqueda = 0;
     }
 
     // precondicion: elemento a insertar no pertenece al árbol
@@ -116,6 +117,7 @@ public class RBTree<T> {
     }
 
     private RBNodoDoble<T> search(RBNodoDoble<T> t, Comparable<T> x) {
+        contadorDeBusqueda++;
         if (x.compareTo(t.elem) == 0)
             return t;
         else if (x.compareTo(t.elem) < 0)
@@ -269,5 +271,21 @@ public class RBTree<T> {
     private RBNodoDoble<T> doubleWithRightChild(RBNodoDoble<T> k1) {
         k1.der = rotateWithLeftChild(k1.der);
         return rotateWithRightChild(k1);
+    }
+
+    public Integer getContadorDeBusqueda() {
+        return contadorDeBusqueda;
+    }
+
+    public int altura(RBTree a) {
+        if(a.isEmpty())
+            return -1;
+        //ver si hay que agregar caso de hoja o arbol con raiz sola
+        return altura(a.root);
+    }
+    private int altura (RBNodoDoble a) {
+        if (a == null)
+            return 0;
+        return 1 + ((altura(a.der) < altura(a.izq)) ? altura(a.izq) : altura(a.der));
     }
 }
