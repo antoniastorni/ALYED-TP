@@ -1,5 +1,10 @@
 package ArbolesBinariosDeBusqueda;
 
+import TpComparacion.AVLTree;
+import TpComparacion.ElementBelongsToTreeException;
+import TpComparacion.ElementdontexistException;
+import TpComparacion.TreeIsEmptyException;
+
 import java.util.ArrayList;
 
 public class MainOrganism {
@@ -13,7 +18,7 @@ public class MainOrganism {
 
         try {
             OrganismABM abm = new OrganismABM();
-            BinarySearchTree<Organism> tree = abm.fromListToTree(array);
+            AVLTree<Organism> tree = abm.fromListToTree(array);
             Organism organism = new Organism("HADEW", "Bacteria", "fkjflwe", 23);
             abm.sortedInform(tree);
             System.out.println("\n");

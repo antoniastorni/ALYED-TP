@@ -1,4 +1,4 @@
-package ArbolesBinariosDeBusqueda;
+package TpComparacion;
 
 public class TreeIsEmptyException extends Exception {
     @Override

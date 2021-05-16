@@ -1,4 +1,4 @@
-package ArbolesBinariosDeBusqueda;
+package TpComparacion;
 
 public class ElementBelongsToTreeException extends Exception {
     @Override

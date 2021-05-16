@@ -1,9 +1,13 @@
 package ArbolesBinariosDeBusqueda;
 
+import TpComparacion.AVLTree;
+import TpComparacion.ElementBelongsToTreeException;
+import TpComparacion.TreeIsEmptyException;
+
 public class Main {
 
     public static void main(String[] args) {
-        BinarySearchTree <Estudiante> a = new BinarySearchTree<Estudiante>();
+        AVLTree<Estudiante> a = new AVLTree<Estudiante>();
         try{
             Estudiante e =new Estudiante("I004", "Gonzalez");
             a.insert(e);

@@ -1,7 +1,10 @@
 package ArbolesBinariosDeBusqueda;
 
+import TpComparacion.AVLTree;
+import TpComparacion.TreeIsEmptyException;
+
 public class ArBinApi <T> {
-    public void inorden (BinarySearchTree <T> a)throws TreeIsEmptyException{
+    public void inorden (AVLTree<T> a)throws TreeIsEmptyException {
         if (!a.isEmpty()){
             inorden(a.getLeft());
             System.out.println(((Estudiante) a.getRoot()).getMatricula() +
@@ -10,7 +13,7 @@ public class ArBinApi <T> {
         }
     }
 
-    public void inordenOrganism (BinarySearchTree <T> a)throws TreeIsEmptyException{
+    public void inordenOrganism (AVLTree<T> a)throws TreeIsEmptyException{
         if (!a.isEmpty()){
             inordenOrganism(a.getLeft());
             System.out.println("Code: " + ((Organism) a.getRoot()).getCode() +
