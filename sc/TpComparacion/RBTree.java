@@ -137,7 +137,7 @@ public class RBTree<T> {
             return exists(t.der, x);
     }
 
-
+//este no va, es de bst
     private RBNodoDoble<T> insert(RBNodoDoble<T> t, Comparable<T> x) {
         if (t == null) {
             t = new RBNodoDoble<T>();
@@ -165,8 +165,7 @@ public class RBTree<T> {
         // Insertion fails if already present
         if (current != nullNode)
             return;
-        current = new RBNodoDoble<>(item, nullNode, nullNode);
-
+        current = new RBNodoDoble<T>(item, nullNode, nullNode);
         // Attach to parent
         if (compare(item, parent) < 0)
             parent.izq = current;
