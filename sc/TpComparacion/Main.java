@@ -18,7 +18,9 @@ public class Main {
         System.out.println("Tardo en crearse:" + (finalmilis-iniciomilis) + "milisegundos");
 
 
-
+        System.out.println(bst.altura(bst));
+        System.out.println(rb.altura(rb));
+        System.out.println(avl.altura(avl));
 
         //d
         int[] toSearch = new int[10];
