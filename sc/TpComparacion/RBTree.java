@@ -280,7 +280,6 @@ public class RBTree<T> {
     public int altura(RBTree a) {
         if(a.isEmpty())
             return -1;
-        //ver si hay que agregar caso de hoja o arbol con raiz sola
         return altura(a.root);
     }
     private int altura (RBNodoDoble a) {
