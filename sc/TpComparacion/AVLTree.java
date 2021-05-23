@@ -87,7 +87,16 @@ public class AVLTree<T> {
         t.root = root.der;
         return t;
     }
-
+    public int altura(AVLTree a) {
+        if(a.isEmpty())
+            return -1;
+        return altura(a.root);
+    }
+    private int altura (AVLNodoDoble a) {
+        if (a == null)
+            return 0;
+        return 1 + ((altura(a.der) < altura(a.izq)) ? altura(a.izq) : altura(a.der));
+    }
 
     // METODOS PRIVADOS
     private AVLNodoDoble<T> getMax(AVLNodoDoble<T> t) {
