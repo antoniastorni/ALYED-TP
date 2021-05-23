@@ -2,6 +2,7 @@ package TpComparacion;
 
 public class Main {
     public static void main(String[] args) throws ElementBelongsToTreeException {
+        long iniciomilis = System.currentTimeMillis();
         int[] randomNumbers = new int[1000];
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         AVLTree<Integer> avl = new AVLTree<>();
@@ -12,6 +13,9 @@ public class Main {
             avl.insert(randomNumbers[i]);
             rb.insert(randomNumbers[i]);
         }
+
+        long finalmilis = System.currentTimeMillis();
+        System.out.println("Tardo en crearse:" + (finalmilis-iniciomilis) + "milisegundos");
     }
 
 }
