@@ -95,7 +95,7 @@ public class AVLTree<T> {
     private int altura (AVLNodoDoble a) {
         if (a == null)
             return 0;
-        return 1 + ((altura(a.der) < altura(a.izq)) ? altura(a.izq) : altura(a.der));
+        return 1 + (Math.max(altura(a.der), altura(a.izq)));
     }
 
     // METODOS PRIVADOS
@@ -205,6 +205,8 @@ public class AVLTree<T> {
         AVLNodoDoble<T> k1 = k2.izq;
         k2.izq = k1.der;
         k1.der = k2;
+        k2.height = Math.max( height( k2.izq ), height( k2.der ) ) + 1;
+        k1.height = Math.max( height( k1.izq ), k2.height ) + 1;
         return k1;
     }
 
@@ -217,6 +219,8 @@ public class AVLTree<T> {
         AVLNodoDoble<T> k2 = k1.der;
         k1.der = k2.izq;
         k2.izq = k1;
+        k2.height = Math.max( height( k2.der ), height( k2.izq ) ) + 1;
+        k1.height = Math.max( height( k1.der ), k2.height ) + 1;
         return k2;
     }
 
@@ -226,7 +230,7 @@ public class AVLTree<T> {
      * For AVL trees, this is a double rotation for case 2.
      */
     private AVLNodoDoble<T> doubleWithLeftChild(AVLNodoDoble<T> k3) {
-        k3.izq = rotateWithRightChild(k3.der);
+        k3.izq = rotateWithRightChild(k3.izq);
         return rotateWithLeftChild(k3);
     }
 

@@ -174,6 +174,6 @@ public class BinarySearchTree<T> {
     private int altura (NodoDoble a) {
         if (a == null)
             return 0;
-        return 1 + ((altura(a.der) < altura(a.izq)) ? altura(a.izq) : altura(a.der));
+        return 1 + (Math.max(altura(a.der), altura(a.izq)));
     }
 }

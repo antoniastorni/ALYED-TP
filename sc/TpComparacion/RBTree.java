@@ -22,13 +22,13 @@ public class RBTree<T> {
         contadorDeBusqueda = 0;
     }
 
-    // precondicion: elemento a insertar no pertenece al árbol
+/*    // precondicion: elemento a insertar no pertenece al árbol
     public void insert(Comparable<T> x) throws ElementBelongsToTreeException {
         if (exists(x)) {
             throw new ElementBelongsToTreeException();
         }
         root = insert(root, x);
-    }
+    }*/
 
     // precondicion: elemento a eliminar pertenece al árbol
     public void delete(Comparable<T> x) throws ElementdontexistException {
@@ -137,19 +137,6 @@ public class RBTree<T> {
             return exists(t.der, x);
     }
 
-//este no va, es de bst
-    private RBNodoDoble<T> insert(RBNodoDoble<T> t, Comparable<T> x) {
-        if (t == null) {
-            t = new RBNodoDoble<T>();
-            t.elem = (T) x;
-
-        } else if (x.compareTo(t.elem) < 0)
-            t.izq = insert(t.izq, x);
-        else
-            t.der = insert(t.der, x);
-        return t;
-    }
-
     public void insert(Comparable<T> item) {
         current = parent = grand = header;
         nullNode.elem = (T)item;  //verificar esto
@@ -165,7 +152,7 @@ public class RBTree<T> {
         // Insertion fails if already present
         if (current != nullNode)
             return;
-        current = new RBNodoDoble<T>(item, nullNode, nullNode);
+        current = new RBNodoDoble<>((T)item, nullNode, nullNode);
         // Attach to parent
         if (compare(item, parent) < 0)
             parent.izq = current;
@@ -204,6 +191,7 @@ public class RBTree<T> {
             return parent.der = compare(item, parent.der) < 0 ? rotateWithLeftChild(parent.der) : rotateWithRightChild(parent.der);
         }
     }
+
     private final int compare( Comparable<T> item, RBNodoDoble<T> t ) {
         if (t == header) {
             return 1;
@@ -257,7 +245,7 @@ public class RBTree<T> {
      * For AVL trees, this is a double rotation for case 2.
      */
     private RBNodoDoble<T> doubleWithLeftChild(RBNodoDoble<T> k3) {
-        k3.izq = rotateWithRightChild(k3.der);
+        k3.izq = rotateWithRightChild(k3.izq);
         return rotateWithLeftChild(k3);
     }
 
@@ -284,6 +272,6 @@ public class RBTree<T> {
     private int altura (RBNodoDoble a) {
         if (a == null)
             return 0;
-        return 1 + ((altura(a.der) < altura(a.izq)) ? altura(a.izq) : altura(a.der));
+        return 1 + (Math.max(altura(a.der), altura(a.izq)));
     }
 }
