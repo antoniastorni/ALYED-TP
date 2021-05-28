@@ -1,0 +1,26 @@
+Numero a buscar	bst	avl	rb
+79734	         1  41	10
+86864	         9	82	20
+76478	         19	118	30
+2278	         31	128	40
+43646	         45	163	50
+80891	         50	207	60
+75594	         60	241	70
+56940 	         79	253	80
+865	             91	263	90
+77389	        105	299	100
+
+promedio de tiempo de construccion(ms)
+- bst: 4,6
+- avl: 10,2
+-rb: 3,3
+
+promedio de altura
+- bst: 22,1
+- avl: 79,5
+- rb: 13,1
+
+promedio de intentos
+- bst: 52,18
+- avl: 242,73
+- rb: 52,85
