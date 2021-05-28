@@ -1,16 +1,11 @@
 package TpComparacion;
-class Node {
-    int data; // holds the key
-    Node parent; // pointer to the parent
-    Node left; // pointer to left child
-    Node right; // pointer to right child
-    int color; // 1 . Red, 0 . Black
-}
-public class RedBlackTree {
-    private Node root;
-    private Node TNULL;
 
-    private void preOrderHelper(Node node) {
+public class RedBlackTree<T extends Comparable<T>> {
+    private RBNode<T> root;
+    private RBNode<T> TNULL;
+    private int contadorDeBusqueda;
+
+    private void preOrderHelper(RBNode<T> node) {
         if (node != TNULL) {
             System.out.print(node.data + " ");
             preOrderHelper(node.left);
@@ -18,7 +13,7 @@ public class RedBlackTree {
         }
     }
 
-    private void inOrderHelper(Node node) {
+    private void inOrderHelper(RBNode<T> node) {
         if (node != TNULL) {
             inOrderHelper(node.left);
             System.out.print(node.data + " ");
@@ -26,7 +21,7 @@ public class RedBlackTree {
         }
     }
 
-    private void postOrderHelper(Node node) {
+    private void postOrderHelper(RBNode<T> node) {
         if (node != TNULL) {
             postOrderHelper(node.left);
             postOrderHelper(node.right);
@@ -34,20 +29,20 @@ public class RedBlackTree {
         }
     }
 
-    private Node searchTreeHelper(Node node, int key) {
+    private RBNode<T> searchTreeHelper(RBNode<T> node, T key) {
         if (node == TNULL || key == node.data) {
             return node;
         }
-
-        if (key < node.data) {
+        contadorDeBusqueda++;
+        if (key.compareTo(node.data) > 0) {     //c
             return searchTreeHelper(node.left, key);
         }
         return searchTreeHelper(node.right, key);
     }
 
     // fix the rb tree modified by the delete operation
-    private void fixDelete(Node x) {
-        Node s;
+    private void fixDelete(RBNode<T> x) {
+        RBNode<T> s;
         while (x != root && x.color == 0) {
             if (x == x.parent.left) {
                 s = x.parent.right;
@@ -115,7 +110,7 @@ public class RedBlackTree {
     }
 
 
-    private void rbTransplant(Node u, Node v){
+    private void rbTransplant(RBNode<T> u, RBNode<T> v){
         if (u.parent == null) {
             root = v;
         } else if (u == u.parent.left){
@@ -126,16 +121,16 @@ public class RedBlackTree {
         v.parent = u.parent;
     }
 
-    private void deleteNodeHelper(Node node, int key) {
+    private void deleteNodeHelper(RBNode<T> node, T key) throws TreeIsEmptyException {
         // find the node containing key
-        Node z = TNULL;
-        Node x, y;
+        RBNode<T> z = TNULL;
+        RBNode<T> x, y;
         while (node != TNULL){
             if (node.data == key) {
                 z = node;
             }
 
-            if (node.data <= key) {
+            if (node.data.compareTo(key) > 0) {     //c
                 node = node.right;
             } else {
                 node = node.left;
@@ -178,8 +173,8 @@ public class RedBlackTree {
     }
 
     // fix the red-black tree
-    private void fixInsert(Node k){
-        Node u;
+    private void fixInsert(RBNode<T> k){
+        RBNode<T> u;
         while (k.parent.color == 1) {
             if (k.parent == k.parent.parent.right) {
                 u = k.parent.parent.left; // uncle
@@ -228,7 +223,7 @@ public class RedBlackTree {
         root.color = 0;
     }
 
-    private void printHelper(Node root, String indent, boolean last) {
+    private void printHelper(RBNode<T> root, String indent, boolean last) {
         // print the tree structure on the screen
         if (root != TNULL) {
             System.out.print(indent);
@@ -248,11 +243,12 @@ public class RedBlackTree {
     }
 
     public RedBlackTree() {
-        TNULL = new Node();
+        TNULL = new RBNode<>();
         TNULL.color = 0;
         TNULL.left = null;
         TNULL.right = null;
         root = TNULL;
+        contadorDeBusqueda = 0;
     }
 
     // Pre-Order traversal
@@ -275,12 +271,14 @@ public class RedBlackTree {
 
     // search the tree for the key k
     // and return the corresponding node
-    public Node searchTree(int k) {
+    public RBNode<T> searchTree(T k) throws ElementBelongsToTreeException {
+        if(!exists(k)) throw new ElementBelongsToTreeException();
         return searchTreeHelper(this.root, k);
     }
 
     // find the node with the minimum key
-    public Node minimum(Node node) {
+    public RBNode<T> minimum(RBNode<T> node) throws TreeIsEmptyException {
+        if(isEmpty()) throw new TreeIsEmptyException();
         while (node.left != TNULL) {
             node = node.left;
         }
@@ -288,7 +286,8 @@ public class RedBlackTree {
     }
 
     // find the node with the maximum key
-    public Node maximum(Node node) {
+    public RBNode<T> maximum(RBNode<T> node) throws TreeIsEmptyException {
+        if(isEmpty()) throw new TreeIsEmptyException();
         while (node.right != TNULL) {
             node = node.right;
         }
@@ -296,7 +295,7 @@ public class RedBlackTree {
     }
 
     // find the successor of a given node
-    public Node successor(Node x) {
+    public RBNode<T> successor(RBNode<T> x) throws TreeIsEmptyException {
         // if the right subtree is not null,
         // the successor is the leftmost node in the
         // right subtree
@@ -306,7 +305,7 @@ public class RedBlackTree {
 
         // else it is the lowest ancestor of x whose
         // left child is also an ancestor of x.
-        Node y = x.parent;
+        RBNode<T> y = x.parent;
         while (y != TNULL && x == y.right) {
             x = y;
             y = y.parent;
@@ -315,7 +314,7 @@ public class RedBlackTree {
     }
 
     // find the predecessor of a given node
-    public Node predecessor(Node x) {
+    public RBNode<T> predecessor(RBNode<T> x) throws TreeIsEmptyException {
         // if the left subtree is not null,
         // the predecessor is the rightmost node in the
         // left subtree
@@ -323,7 +322,7 @@ public class RedBlackTree {
             return maximum(x.left);
         }
 
-        Node y = x.parent;
+        RBNode<T> y = x.parent;
         while (y != TNULL && x == y.left) {
             x = y;
             y = y.parent;
@@ -333,8 +332,8 @@ public class RedBlackTree {
     }
 
     // rotate left at node x
-    public void leftRotate(Node x) {
-        Node y = x.right;
+    public void leftRotate(RBNode<T> x) {
+        RBNode<T> y = x.right;
         x.right = y.left;
         if (y.left != TNULL) {
             y.left.parent = x;
@@ -352,8 +351,8 @@ public class RedBlackTree {
     }
 
     // rotate right at node x
-    public void rightRotate(Node x) {
-        Node y = x.left;
+    public void rightRotate(RBNode<T> x) {
+        RBNode<T> y = x.left;
         x.left = y.right;
         if (y.right != TNULL) {
             y.right.parent = x;
@@ -372,21 +371,22 @@ public class RedBlackTree {
 
     // insert the key to the tree in its appropriate position
     // and fix the tree
-    public void insert(int key) {
+    public void insert(T key) throws ElementBelongsToTreeException {
+        if(exists(key)) throw new ElementBelongsToTreeException();
         // Ordinary Binary Search Insertion
-        Node node = new Node();
+        RBNode<T> node = new RBNode<>();
         node.parent = null;
         node.data = key;
         node.left = TNULL;
         node.right = TNULL;
         node.color = 1; // new node must be red
 
-        Node y = null;
-        Node x = this.root;
+        RBNode<T> y = null;
+        RBNode<T> x = this.root;
 
         while (x != TNULL) {
             y = x;
-            if (node.data < x.data) {
+            if (node.data.compareTo(x.data) < 0) {
                 x = x.left;
             } else {
                 x = x.right;
@@ -397,7 +397,7 @@ public class RedBlackTree {
         node.parent = y;
         if (y == null) {
             root = node;
-        } else if (node.data < y.data) {
+        } else if (node.data.compareTo(y.data) < 0) {   //c
             y.left = node;
         } else {
             y.right = node;
@@ -418,12 +418,13 @@ public class RedBlackTree {
         fixInsert(node);
     }
 
-    public Node getRoot(){
+    public RBNode<T> getRoot(){
         return this.root;
     }
 
     // delete the node from the tree
-    public void deleteNode(int data) {
+    public void deleteNode(T data) throws ElementdontexistException, TreeIsEmptyException {
+        if(!exists(data)) throw new ElementdontexistException();
         deleteNodeHelper(this.root, data);
     }
 
@@ -432,12 +433,14 @@ public class RedBlackTree {
         printHelper(this.root, "", true);
     }
 
-    public boolean exists(int x) {
+    public boolean exists(T x) {
         return exists(root, x);
     }
 
-    private boolean exists(Node t, Integer x) {
+    private boolean exists(RBNode<T> t, T x) {
         if (t == null)
+            return false;
+        if(t.data == null)
             return false;
         if (x.compareTo(t.data) == 0)
             return true;
@@ -446,14 +449,36 @@ public class RedBlackTree {
         else
             return exists(t.right, x);
     }
-    public int altura(RedBlackTree a) {
+    public int altura(RedBlackTree<T> a) {
         if(a.root == null)
             return -1;
         return altura(a.root);
     }
-    private int altura (Node a) {
+    private int altura(RBNode<T> a) {
         if (a == null)
             return 0;
         return 1 + (Math.max(altura(a.right), altura(a.left)));
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public RedBlackTree<T> getLeft() throws TreeIsEmptyException {
+        if(isEmpty()) throw new TreeIsEmptyException();
+        RedBlackTree<T> t = new RedBlackTree<>();
+        t.root = root.left;
+        return t;
+    }
+
+    public RedBlackTree<T> getRight() throws TreeIsEmptyException {
+        if(isEmpty()) throw new TreeIsEmptyException();
+        RedBlackTree<T> t = new RedBlackTree<>();
+        t.root = root.right;
+        return t;
+    }
+
+    public int getContadorDeBusqueda() {
+        return contadorDeBusqueda;
     }
 }

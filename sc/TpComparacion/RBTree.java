@@ -22,13 +22,13 @@ public class RBTree<T> {
         contadorDeBusqueda = 0;
     }
 
-/*    // precondicion: elemento a insertar no pertenece al árbol
+   // precondicion: elemento a insertar no pertenece al árbol
     public void insert(Comparable<T> x) throws ElementBelongsToTreeException {
         if (exists(x)) {
             throw new ElementBelongsToTreeException();
         }
-        root = insert(root, x);
-    }*/
+        //root = insert(root, x);
+    }
 
     // precondicion: elemento a eliminar pertenece al árbol
     public void delete(Comparable<T> x) throws ElementdontexistException {
@@ -137,7 +137,7 @@ public class RBTree<T> {
             return exists(t.der, x);
     }
 
-    public void insert(Comparable<T> item) {
+    public void insert(RBNodoDoble<T> tree, Comparable<T> item) {
         current = parent = grand = header;
         nullNode.elem = (T)item;  //verificar esto
         while (compare(item, current) != 0) {
