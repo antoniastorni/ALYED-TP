@@ -3,11 +3,12 @@ package Archivos.Ejemplo;
 import java.io.Serializable;
 
 public class Vacuna implements Serializable {
+
     private int codigo;
     private String descripcion;
     private Fecha vencimiento;
-    public Vacuna(int codigo, String descripcion, Fecha
-            vencimiento) {
+
+    public Vacuna(int codigo, String descripcion, Fecha vencimiento) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.vencimiento = vencimiento;

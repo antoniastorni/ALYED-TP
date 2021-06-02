@@ -5,9 +5,6 @@ public class Cotizacion {
     private double valorDolar;
     private boolean activo;
 
-    public Cotizacion() {
-    }
-
     public Cotizacion(int mes, double valorDolar, boolean activo) {
         this.mes = mes;
         this.valorDolar = valorDolar;

@@ -8,10 +8,6 @@ public class Venta {
     private int dia, mes, anio;
     private boolean activo;
 
-    public Venta() {
-
-    }
-
     public Venta(String codigoDeDestino, int codigoArticulo, int cantidad, double precioUnitDolar, int dia, int mes, int anio, boolean activo) {
         this.codigoDeDestino = codigoDeDestino;
         this.codigoArticulo = codigoArticulo;

@@ -14,10 +14,6 @@ public class Destino implements Serializable {
         this.activo = activo;
     }
 
-    public Destino(){
-
-    }
-
     public String getCodigoDestino() {
         return codigoDestino;
     }

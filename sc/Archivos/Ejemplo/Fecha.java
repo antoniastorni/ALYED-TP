@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Fecha implements Serializable {
     private int dd, mm,aa;
+
     public Fecha(int dd, int mm, int aa) {
         this.dd = dd;
         this.mm = mm;

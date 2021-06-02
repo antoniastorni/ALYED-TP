@@ -83,8 +83,41 @@ public class IO {
                 "\n2. Monto de ventas en pesos por mes");
     }
 
-    public void llenandoDePrueba() {
-        //llenar los archivosss
+    public void llenadoDePrueba() {
+        try {
+            ArchivoDestino destino = new ArchivoDestino(archDestino);
+            ArchivoCotizacionPorAnio cotizaciones = new ArchivoCotizacionPorAnio(arcnCotizacion);
+            ArchivoVentasPorAnio ventasPorAnio = new ArchivoVentasPorAnio(archVenta);
+            destino.irAlFinal();
+            cotizaciones.irAlFinal();
+            ventasPorAnio.irAlFinal();
+            //alta detinos
+            destino.escribirDestino(new Destino("MIA", "MIAMI", true));
+            destino.escribirDestino(new Destino("ARG", "ARGENTINA", true));
+            destino.escribirDestino(new Destino("SGP", "SINGAPUR", true));
+            destino.escribirDestino(new Destino("MSC", "MOSCU", true));
+            destino.escribirDestino(new Destino("MDD", "MADRID", true));
+            //alta cotizacion
+            double randomization;
+            for (int i = 0; i < 12; i++) {
+                randomization = Math.random() * 100;
+                cotizaciones.escribirCotizacion(new Cotizacion(i+1, randomization, true));
+            }
+            //alta ventas
+            ventasPorAnio.escribirVenta(new Venta("ARG", 123, 2,200, 5,10,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("ARG", 123, 1,200, 5,5,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("MIA", 123, 1,200, 5,10,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("SGP", 123, 3,200, 5,11,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("MIA", 123, 2,200, 5,10,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("SGP", 123, 1,200, 5,5,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("SGP", 123, 3,200, 5,11,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("MIA", 123, 4,200, 5,10,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("SGP", 123, 1,200, 5,11,2020, true  ));
+            ventasPorAnio.escribirVenta(new Venta("MDD", 123, 1,200, 5,10,2020, true  ));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
