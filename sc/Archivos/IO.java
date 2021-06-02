@@ -12,9 +12,9 @@ public class IO {
 
     public IO() {
         sc = new Scanner(System.in);
+        llenandoDePrueba();
         menuFinal();
-        int option = sc.nextInt();
-        sc.nextLine();
+        int option = Integer.parseInt(sc.nextLine());
         switch (option) {
             case 1:
                 ventasPorDestino();
@@ -83,6 +83,13 @@ public class IO {
                 "\n2. Monto de ventas en pesos por mes");
     }
 
+    public void llenandoDePrueba() {
+        //llenar los archivosss
+    }
+
+    public static void main(String[] args) {
+        new IO();
+    }
 //---------------------------------------------------------------------------------------------
     // DESTINOS
 
@@ -225,6 +232,5 @@ public class IO {
             System.out.println(e.getMessage());
         }
     }
-
 
 }
