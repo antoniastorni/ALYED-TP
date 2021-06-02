@@ -37,4 +37,12 @@ public class Cotizacion {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Cotizacion{" +
+                "mes=" + mes +
+                ", valorDolar=" + valorDolar +
+                '}';
+    }
 }
