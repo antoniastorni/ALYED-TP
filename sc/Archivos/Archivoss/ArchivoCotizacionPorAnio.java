@@ -1,4 +1,4 @@
-package Archivos;
+package Archivos.Archivoss;
 
 import java.io.*;
 

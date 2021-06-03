@@ -1,4 +1,4 @@
-package Archivos;
+package Archivos.Archivoss;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ import java.io.RandomAccessFile;
 public class ArchivoVentasPorAnio {
     private File file;
     private RandomAccessFile raf;
-    private int sizeReg = 41;
+    private int sizeReg = 35;
 
     public ArchivoVentasPorAnio(String nombre) throws FileNotFoundException {
         file = new File(nombre);

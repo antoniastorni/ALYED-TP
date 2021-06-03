@@ -25,6 +25,9 @@ public class BinaryTree<T>{
         return root.dato;
     }
 
+    public void setRoot(DoubleNode<T> root) {
+        this.root = root;
+    }
 
     public BinaryTree<T> getLeft() {
         BinaryTree<T> t = new BinaryTree<>();

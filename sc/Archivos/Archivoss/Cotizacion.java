@@ -1,4 +1,4 @@
-package Archivos;
+package Archivos.Archivoss;
 
 public class Cotizacion {
     private int mes;

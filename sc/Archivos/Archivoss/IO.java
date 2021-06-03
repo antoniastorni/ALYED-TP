@@ -1,4 +1,4 @@
-package Archivos;
+package Archivos.Archivoss;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class IO {
 
     public IO() {
         sc = new Scanner(System.in);
-        llenandoDePrueba();
+        llenadoDePrueba();
         menuFinal();
         int option = Integer.parseInt(sc.nextLine());
         switch (option) {
@@ -49,6 +49,7 @@ public class IO {
                 montoEnDolar = 0;
             }
         } catch (Exception e) {
+            System.out.println("ventas por mes");
             System.out.println(e.getMessage());
         }
     }
@@ -73,7 +74,11 @@ public class IO {
                 }
                 System.out.println("El monto recaudado para el destino de " + d.getDescripcion() + " es de: $" + montoEnPesos + " (pesos).");
             }
+            ventas.cerrar();
+            cotizacion.cerrar();
+            destinos.cerrar();
         } catch (Exception e) {
+            System.out.println("ventas por destino");
             System.out.println(e.getMessage());
         }
     }
@@ -93,9 +98,9 @@ public class IO {
             ventasPorAnio.irAlFinal();
             //alta detinos
             destino.escribirDestino(new Destino("MIA", "MIAMI", true));
-            destino.escribirDestino(new Destino("ARG", "ARGENTINA", true));
-            destino.escribirDestino(new Destino("SGP", "SINGAPUR", true));
-            destino.escribirDestino(new Destino("MSC", "MOSCU", true));
+            destino.escribirDestino(new Destino("ARG", "ARGENT", true));
+            destino.escribirDestino(new Destino("SGP", "SINGAP", true));
+            destino.escribirDestino(new Destino("MSC", "MOSCUu", true));
             destino.escribirDestino(new Destino("MDD", "MADRID", true));
             //alta cotizacion
             double randomization;
@@ -114,8 +119,12 @@ public class IO {
             ventasPorAnio.escribirVenta(new Venta("MIA", 123, 4,200, 5,10,2020, true  ));
             ventasPorAnio.escribirVenta(new Venta("SGP", 123, 1,200, 5,11,2020, true  ));
             ventasPorAnio.escribirVenta(new Venta("MDD", 123, 1,200, 5,10,2020, true  ));
+            destino.cerrar();
+            cotizaciones.cerrar();
+            ventasPorAnio.cerrar();
 
         } catch (IOException e) {
+            System.out.println("llenado");
             e.printStackTrace();
         }
     }

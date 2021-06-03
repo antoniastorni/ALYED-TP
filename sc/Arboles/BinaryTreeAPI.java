@@ -180,6 +180,25 @@ public class BinaryTreeAPI<T> {
         }
 
 
+        public void isomorfoSuma(BinaryTree<Integer> a) {
+            if(!a.isEmpty()) {
+                DoubleNode<Integer> valor = new DoubleNode<>(suma(a));
+                a.setRoot(valor);
+                //print in order
+                isomorfoSuma(a.getLeft());
+                System.out.println(a.getRoot());
+                isomorfoSuma(a.getRight());
+            }
+    }
+
+        private int suma(BinaryTree<Integer> a) {
+            if(a.isEmpty()) return 0;
+            if(a.getRoot() % 2 != 0) {
+                return suma(a.getRight()) + suma(a.getLeft());
+            }
+            return a.getRoot() + suma(a.getRight()) + suma(a.getLeft());
+        }
+
 
 }
 

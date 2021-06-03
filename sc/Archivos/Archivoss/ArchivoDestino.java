@@ -1,11 +1,11 @@
-package Archivos;
+package Archivos.Archivoss;
 
 import java.io.*;
 
 public class ArchivoDestino {
     private File file;
     private RandomAccessFile raf;
-    private int sizeRegistro = 5;
+    private int sizeRegistro = 17;
 
     public ArchivoDestino(String nombre) throws FileNotFoundException {
         file = new File(nombre);
