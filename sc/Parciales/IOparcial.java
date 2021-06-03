@@ -14,17 +14,27 @@ public class IOparcial {
     de la más baja a la más alta.
      */
     public static void listadoProvincia() {
+        Provincia[] provincias = new Provincia[23];
         try {
             ArchivoProvincia archivoProvincia = new ArchivoProvincia("Archivo de provinciass");
             archivoProvincia.irAlInicio();
             for (int i = 0; i < archivoProvincia.cantRegistros(); i++) {
-                System.out.println(archivoProvincia.leerProvincia().toString());
+                provincias[i] = archivoProvincia.leerProvincia();
             }
+            imprimirOrdenado(provincias);
             archivoProvincia.cerrar();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void imprimirOrdenado(Provincia[] provincias) {
+        for (int i = 0; i < provincias.length; i++) {
+            for (int j = 0; j < provincias.length-1; j++) {
+                if(provincias[i])
+            }
         }
     }
 

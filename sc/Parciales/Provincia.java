@@ -2,7 +2,7 @@ package Parciales;
 
 import java.util.Arrays;
 
-public class Provincia {
+public class Provincia implements Comparable<Provincia>{
     private int provincia;
     private long[] lluviasMensuales;
 
@@ -41,5 +41,16 @@ public class Provincia {
                 "provincia=" + provincia +
                 ", lluviasMensuales=" + Arrays.toString(lluviasMensuales) +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Provincia o) {
+        long thisLluvias = 0;
+        long otherLluvias = 0;
+        for (int i = 0; i < this.lluviasMensuales.length; i++) {
+            thisLluvias = thisLluvias + lluviasMensuales[i];
+            otherLluvias = otherLluvias + o.lluviasMensuales[i];
+        }
+        return Long.compare(thisLluvias, otherLluvias);
     }
 }
