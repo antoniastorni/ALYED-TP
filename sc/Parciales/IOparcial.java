@@ -33,7 +33,7 @@ public class IOparcial {
     public static void imprimirOrdenado(Provincia[] provincias) {
         for (int i = 0; i < provincias.length; i++) {
             for (int j = 0; j < provincias.length-1; j++) {
-                if(provincias[i])
+//                if(provincias[i])
             }
         }
     }

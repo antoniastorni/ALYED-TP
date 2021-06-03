@@ -8,7 +8,7 @@ import java.io.RandomAccessFile;
 public class ArchivoVentasPorAnio {
     private File file;
     private RandomAccessFile raf;
-    private int sizeReg = 35;
+    private int sizeReg = 34;
 
     public ArchivoVentasPorAnio(String nombre) throws FileNotFoundException {
         file = new File(nombre);
@@ -16,7 +16,7 @@ public class ArchivoVentasPorAnio {
     }
 
     public void escribirVenta(Venta venta) throws IOException {
-        raf.writeChars(venta.getCodigoDeDestino());
+        raf.writeUTF(venta.getCodigoDeDestino());
         raf.writeInt(venta.getCodigoArticulo());
         raf.writeInt(venta.getCantidad());
         raf.writeDouble(venta.getPrecioUnitDolar());
@@ -44,8 +44,8 @@ public class ArchivoVentasPorAnio {
     }
 
     public Venta leerVenta() throws IOException {
-        char[] destino = {raf.readChar(), raf.readChar(), raf.readChar()};
-        return new Venta(String.copyValueOf(destino), raf.readInt(), raf.readInt(), raf.readDouble(), raf.readInt(),raf.readInt(),raf.readInt(), raf.readBoolean());
+
+        return new Venta(raf.readUTF(), raf.readInt(), raf.readInt(), raf.readDouble(), raf.readInt(),raf.readInt(),raf.readInt(), raf.readBoolean());
     }
 
     public Venta buscarVentaPorDestino(String codigoDestino) throws Exception {
