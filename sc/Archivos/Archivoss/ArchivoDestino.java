@@ -5,7 +5,7 @@ import java.io.*;
 public class ArchivoDestino {
     private File file;
     private RandomAccessFile raf;
-    private int sizeRegistro = 17;
+    private int sizeRegistro = 5;
 
     public ArchivoDestino(String nombre) throws FileNotFoundException {
         file = new File(nombre);

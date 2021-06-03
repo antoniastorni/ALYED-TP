@@ -3,8 +3,8 @@ package Arboles;
 
 
 public class DoubleNode <T>{
-    T dato;
-    DoubleNode <T> right, left;
+    public T dato;
+    public DoubleNode <T> right, left;
 
     public DoubleNode(T o){
         dato = o;

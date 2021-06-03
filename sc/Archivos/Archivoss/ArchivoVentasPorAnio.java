@@ -16,13 +16,15 @@ public class ArchivoVentasPorAnio {
     }
 
     public void escribirVenta(Venta venta) throws IOException {
-        raf.writeUTF(venta.getCodigoDeDestino());
+        raf.writeChars(venta.getCodigoDeDestino());
         raf.writeInt(venta.getCodigoArticulo());
         raf.writeInt(venta.getCantidad());
         raf.writeDouble(venta.getPrecioUnitDolar());
         raf.writeInt(venta.getDia());
         raf.writeInt(venta.getMes());
         raf.writeInt(venta.getAnio());
+        raf.writeBoolean(venta.isActivo());
+
     }
 
     public void cerrar() throws IOException {
@@ -42,7 +44,8 @@ public class ArchivoVentasPorAnio {
     }
 
     public Venta leerVenta() throws IOException {
-        return new Venta(raf.readUTF(), raf.readInt(), raf.readInt(), raf.readDouble(), raf.readInt(),raf.readInt(),raf.readInt(), raf.readBoolean());
+        char[] destino = {raf.readChar(), raf.readChar(), raf.readChar()};
+        return new Venta(String.copyValueOf(destino), raf.readInt(), raf.readInt(), raf.readDouble(), raf.readInt(),raf.readInt(),raf.readInt(), raf.readBoolean());
     }
 
     public Venta buscarVentaPorDestino(String codigoDestino) throws Exception {

@@ -1,6 +1,8 @@
 package Archivos.Archivoss;
 
-public class Cotizacion {
+import java.io.Serializable;
+
+public class Cotizacion implements Serializable {
     private int mes;
     private double valorDolar;
     private boolean activo;

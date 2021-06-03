@@ -2,7 +2,7 @@ package Arboles;
 
 
 public class BinaryTree<T>{
-     DoubleNode<T> root;
+     public DoubleNode<T> root;
 
     public BinaryTree(){
         root = null;

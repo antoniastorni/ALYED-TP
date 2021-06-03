@@ -1,0 +1,17 @@
+Archivos:
+    - No hace falta crear un txt al usar RandomAccessFile, el programa te los crea sólo
+      Y NO SON ARCHIVOS DE TEXTO LOS QUE CREAAA,
+
+    - 1. Se crea el objeto con todos los atributos + boolean isActivo + setters + getters
+      2. Se crea la clase Archivo que maneja el RandomAccessFile y todas sus acciones, buscar, eliminar, leer, escribir,etc
+      3. Se crea el IO que contiene el main + el método que resuelve lo que me pida el enunciado
+
+    - Agregar todas las excepciones en el signature MENOS en el último método en el que las uso (el del enunciado)
+
+    Tipo de dato         bytes
+       int                 4
+       long                8
+       double              8
+       char                2
+       boolean             1
+       string              2 (no toy segura)       (uso writeUTF/readUTF)

@@ -50,7 +50,7 @@ public class IO {
             }
         } catch (Exception e) {
             System.out.println("ventas por mes");
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -79,7 +79,8 @@ public class IO {
             destinos.cerrar();
         } catch (Exception e) {
             System.out.println("ventas por destino");
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }
     }
 
@@ -108,6 +109,7 @@ public class IO {
                 randomization = Math.random() * 100;
                 cotizaciones.escribirCotizacion(new Cotizacion(i+1, randomization, true));
             }
+            System.out.println(cotizaciones.leerCotizacion().toString());
             //alta ventas
             ventasPorAnio.escribirVenta(new Venta("ARG", 123, 2,200, 5,10,2020, true  ));
             ventasPorAnio.escribirVenta(new Venta("ARG", 123, 1,200, 5,5,2020, true  ));
@@ -119,6 +121,7 @@ public class IO {
             ventasPorAnio.escribirVenta(new Venta("MIA", 123, 4,200, 5,10,2020, true  ));
             ventasPorAnio.escribirVenta(new Venta("SGP", 123, 1,200, 5,11,2020, true  ));
             ventasPorAnio.escribirVenta(new Venta("MDD", 123, 1,200, 5,10,2020, true  ));
+            System.out.println(ventasPorAnio.leerVenta().toString());
             destino.cerrar();
             cotizaciones.cerrar();
             ventasPorAnio.cerrar();

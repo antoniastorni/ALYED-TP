@@ -1,6 +1,8 @@
 package Archivos.Archivoss;
 
-public class Venta {
+import java.io.Serializable;
+
+public class Venta implements Serializable {
     private String codigoDeDestino;
     private int codigoArticulo;
     private int cantidad;
@@ -81,5 +83,19 @@ public class Venta {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Venta{" +
+                "codigoDeDestino='" + codigoDeDestino + '\'' +
+                ", codigoArticulo=" + codigoArticulo +
+                ", cantidad=" + cantidad +
+                ", precioUnitDolar=" + precioUnitDolar +
+                ", dia=" + dia +
+                ", mes=" + mes +
+                ", anio=" + anio +
+                ", activo=" + activo +
+                '}';
     }
 }

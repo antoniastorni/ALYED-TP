@@ -16,6 +16,7 @@ public class ArchivoCotizacionPorAnio {
     public void escribirCotizacion(Cotizacion cotizacion) throws IOException {
         raf.writeInt(cotizacion.getMes());
         raf.writeDouble(cotizacion.getValorDolar());
+        raf.writeBoolean(cotizacion.isActivo());
     }
 
     public void cerrar() throws IOException {
